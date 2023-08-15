@@ -1,5 +1,9 @@
 // showChart("child", 15, 15);
+
+let chart
+
 function showChart(patientType, calculatedIbw, drop) {
+  // console.log(patientType,calculatedIbw,drop)
   var chartDataX = [0, 6, 12, 18, 24, 30, 36, 42, 48];
   var fakeChartDataY = [0, 6, 12, 18, 24, 18, 12, 6, 0];
   var chartDataY = [];
@@ -285,7 +289,9 @@ function showChart(patientType, calculatedIbw, drop) {
     },
   };
 
-  var chart = new ApexCharts(document.querySelector("#chart"), options);
+  if(chart)chart.destroy()
+
+  chart = new ApexCharts(document.querySelector("#chart"), options);
 
   chart.render();
 }

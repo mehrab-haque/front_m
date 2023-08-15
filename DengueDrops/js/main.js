@@ -196,18 +196,28 @@ function calculate() {
       }
     }
 
-    let tempHeight = height / 100;
-    let ageMonthStr = ageMonthConverted.toFixed(1);
-    calculatedIbw = bmi_table[gender][ageMonthStr] * Math.pow(tempHeight, 2);
+    if (ageMonthConverted < 12) {
+      calculatedIbw = (ageMonthConverted+9)/2;
+    } else if(ageMonthConverted >= 12 && ageMonthConverted <=84){
+      calculatedIbw = (ageMonthConverted/6)+8;
+    }else {
+      calculatedIbw = (ageMonthConverted/12)*3;
+    }
+
+    // let tempHeight = height / 100;
+    // let ageMonthStr = ageMonthConverted.toFixed(1);
+    // calculatedIbw = bmi_table[gender][ageMonthStr] * Math.pow(tempHeight, 2);
 
     calculatedIbw = calculatedIbw.toFixed(2);
+    let originalIbw=calculatedIbw
     if (calculatedIbw > weight) {
       calculatedIbw = weight;
     }
+    
 
     ibw = document.getElementsByClassName("ibw");
     ibw[0].classList.remove("d-none");
-    document.getElementById("ibw").innerHTML = calculatedIbw;
+    document.getElementById("ibw").innerHTML = originalIbw;
   }
 
   if (patientType == "adult" && ageYear <= 18) {
