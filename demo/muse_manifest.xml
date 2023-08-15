@@ -1,0 +1,141 @@
+<manifest alg="2" build="2018.1.0.386" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="mhealth.buet.ac.bd" resolutions="1x" timestamp="1594465304025">
+  <folder name="assets">
+    <file name="add1.css" crc="3797720221" seo="true" mt="1588341336000"/>
+    <file name="add1.js" crc="4126729058" seo="true" mt="1588341336000"/>
+  </folder>
+  <folder name="css">
+    <file name="site_global.css" crc="4072584917"/>
+    <file name="404.css" crc="13472471" ref="404"/>
+    <file name="iefonts_404.css" crc="310040160" ref="404"/>
+    <file name="index.css" crc="33927805" ref="index"/>
+    <file name="iefonts_index.css" crc="4162971592" ref="index"/>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="209076791" ref="index:404"/>
+    <file name="museutils.js" crc="340535759" ref="index:404"/>
+    <file name="whatinput.js" crc="86476730" ref="index:404"/>
+    <file name="museconfig.js" crc="4286661555" ref="index:404"/>
+    <file name="webpro.js" crc="4059564322" ref="index"/>
+    <file name="form_check.php" crc="4020933626" ref="index"/>
+    <file name="form_throttle.php" crc="4259590256" ref="index"/>
+    <file name="form_process.php" crc="37464564" ref="index"/>
+    <file name="form-u3309.php" crc="367227481" ref="index"/>
+    <file name="require.js" crc="7928878" ref="index:404"/>
+    <file name="jquery.watch.js" crc="51536988" ref="404"/>
+  </folder>
+  <folder name="images">
+    <file name="favicon.ico" crc="4053808198" ref="index"/>
+    <file name="mhealthlogo.svg" crc="320975445" seo="true" ref="index:404">
+      <caption webpage="404" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="mhealthlogo_poster_.png" crc="506503071" ref="index"/>
+    <file name="pointerb.png" crc="3780694765" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="icons8-github_.svg" crc="259680991" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="icons8-github__poster_.png" crc="94128030" ref="index"/>
+    <file name="befunky-collage new.jpg" crc="3954224259" seo="true" ref="index:404">
+      <caption webpage="404" alt=""/>
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="nusrat binta nizam.jpg" crc="44605538" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="meemnur rashid.jpg" crc="231512977" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="shoyad nuhash.jpg" crc="354230163" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="anirban chakraborty.jpg" crc="4004046115" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="mir maheen labib.jpg" crc="3808511534" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="nurul huda.png" crc="451451599" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="kaisar alman.jpg" crc="526518546" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="pasted image 230x345-crop-u8337.png" crc="140513657" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="google-scholar-logo.svg" crc="3788492701" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="google-scholar-logo_poster_.png" crc="4283753586" ref="index"/>
+    <file name="icons8-facebook-filled.svg" crc="146029408" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="icons8-facebook-filled_poster_.png" crc="4128153142" ref="index"/>
+    <file name="sushmit.jpg" crc="73265979" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="mehnaz urbee.jpg" crc="529199233" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="farhana islam.jpg" crc="290866880" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="taufiq-crop-u2208.png" crc="3992161480" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="pnagy.jpg" crc="367461501" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="u15100.png" crc="261766457" ref="index"/>
+    <file name="u15100-r.png" crc="4109606152" ref="index"/>
+    <file name="u15107.png" crc="3886299213" ref="index"/>
+    <file name="u15107-r.png" crc="4280698665" ref="index"/>
+    <file name="u15114.png" crc="3838684276" ref="index"/>
+    <file name="u15114-r.png" crc="140933562" ref="index"/>
+    <file name="u15588.png" crc="4021358621" ref="index"/>
+    <file name="u15588-r.png" crc="4032719041" ref="index"/>
+    <file name="imamul_sept19.jpg" crc="202939649" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="_mg_6676-crop-u2229.png" crc="439190146" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="u17074.png" crc="3943244591" ref="index"/>
+    <file name="u17074-r.png" crc="4136244834" ref="index"/>
+    <file name="u17081.png" crc="479661985" ref="index"/>
+    <file name="u17081-r.png" crc="3767445204" ref="index"/>
+    <file name="nawsabah noor photo-crop-u16973.png" crc="15305365" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="sindhu (1)-crop-u17399.png" crc="4278941624" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="u17453.png" crc="87869959" ref="index"/>
+    <file name="u17453-r.png" crc="4093246857" ref="index"/>
+    <file name="u17443.png" crc="443930840" ref="index"/>
+    <file name="u17443-r.png" crc="110598661" ref="index"/>
+    <file name="u17479.png" crc="3907620560" ref="index"/>
+    <file name="u17479-r.png" crc="34752709" ref="index"/>
+    <file name="sadi mohammad-crop-u14717.png" crc="204720355" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="uday 2-crop-u14727.png" crc="409698279" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="sadia khan-crop-u17551.png" crc="3794497525" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+  </folder>
+  <file name="index.html" crc="345953463" seo="true" mt="1594465256505" redirect="true"/>
+  <file name="404.html" crc="4181701803" seo="true" mt="1593967420860" redirect="true"/>
+</manifest>

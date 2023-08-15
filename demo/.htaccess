@@ -1,0 +1,4 @@
+#  Demo
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^mhealth\.buet\.ac\.bd$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.mhealth\.buet\.ac\.bd$

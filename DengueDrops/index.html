@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>DengueDrops</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/custom.css" />
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <!-- <script src="js/html2canvas.min.js"></script> -->
+  <script src="js/jspdf.debug.js"></script>
+  <script src="js/jspdf.plugin.autotable.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+  <style>
+    .text-align-center {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 px-0 d-flex justify-content-center bg-white">
+        <img class="img-fluid logo-img" src="images/logo.png" />
+      </div>
+    </div>
+  </div>
+
+  <section class="ftco-section" id="ftco-section">
+    <div class="container">
+      <div class="d-flex justify-content-center">
+        <div class="col-lg-7 col-md-7 order-md-last d-flex align-items-stretch bg-white">
+          <div class="w-100 p-md-5-none p-4-none">
+            <h3 class="text-white-sm-disable text-align-center">
+              DengueDrops - IV Fluid Calculator
+            </h3>
+            <h5 class="mb-4 text-align-center">
+              (For Group B Non Shock patients)
+            </h5>
+            <h6 class="mb-4 text-align-center" style="color: red; font-weight: bold;">
+              Attention: The values are calculated according to the DGHS dengue guidelines. Please use clinical
+              judgement whenever appropriate.
+            </h6>
+            <h6 class="text-danger d-none error text-align-center">
+              Error: One or more input field is empty.
+            </h6>
+            <h6 class="text-danger d-none error-1 text-align-center">
+              Warning: Patient is severely dehydrated. Please use clinical
+              judgement for treatment.
+            </h6>
+            <h6 class="text-danger d-none error-2 text-align-center">
+              Warning: Patient is out of calculation range. Please use
+              clinical judgement to proceed with treatment.
+            </h6>
+            <h6 class="text-danger d-none error-3 text-align-center">
+              Warning: Patient might be in shock / Proceeding to shock. Please
+              follow shock treatment protocol.
+            </h6>
+            <!-- patient type input section -->
+            <div class="row sec1">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="label text-white-sm-disable" for="type">Select Patient Type</label>
+                  <select class="form-control" name="type" id="patientType" onchange="changePatientTypeDropdown(this)">
+                    <option value="child">Child</option>
+                    <option value="adult">Adult</option>
+                  </select>
+                </div>
+              </div>
+              <!-- gender option -->
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="label text-white-sm-disable" for="gender">Select Gender</label>
+                  <select class="form-control" name="gender" id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- age input section -->
+              <div class="col-lg-6 age-div" id="ageInputSection">
+                <div class="form-group">
+                  <label class="label text-white-sm-disable" for="age">Patient Age</label>
+
+                  <div class="row px-3">
+                    <div class="input-group mb-3">
+                      <input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                        class="form-control col-5" name="ageYear" id="ageYear" placeholder="1"
+                        aria-describedby="ageYear-span" />
+                      <span class="input-group-text" id="ageYear-span">Year</span>
+                    </div>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control col-5" name="ageMonth" id="ageMonth" placeholder="1"
+                        aria-describedby="ageMonth-span" />
+                      <span class="input-group-text" id="ageMonth-span">Month</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- height input section -->
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="label text-white-sm-disable" for="height">Patient Height</label>
+                  <div class="row px-3">
+                    <div class="input-group mb-3">
+                      <input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                        class="form-control col-5" name="ft" id="ft" placeholder="5" aria-describedby="ft-span" />
+                      <span class="input-group-text" id="ft-span">Feet</span>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <input type="number" min="0" max="12" step="1" oninput="validity.valid||(value='');"
+                        class="form-control col-5" name="in" id="in" placeholder="5" aria-describedby="ft-span" />
+                      <span class="input-group-text" id="ft-span">Inches</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- body weight -->
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="label text-white-sm-disable" for="weight">Patient Body Weight</label>
+                  <div class="input-group mb-3">
+                    <input type="number" class="form-control col-5" name="weight" id="weight" placeholder="60"
+                      aria-describedby="weight-span" />
+                    <span class="input-group-text" id="weight-span">KG</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- systolic blood pressure -->
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="label text-white-sm-disable" for="systolic">Systolic Blood Pressure</label>
+                  <div class="input-group mb-3">
+                    <input type="number" min="0" max="299" step="1" oninput="validity.valid||(value='');"
+                      class="form-control col-5" name="systolic" id="systolic" placeholder="120"
+                      aria-describedby="systolic-span" />
+                    <span class="input-group-text" id="systolic-span">mm/Hg</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- diastolic blood pressure -->
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="label text-white-sm-disable" for="diastolic">Diastolic Blood Pressure</label>
+                  <div class="input-group mb-3">
+                    <input type="number" min="0" max="199" step="1" oninput="validity.valid||(value='');"
+                      class="form-control col-5" name="diastolic" id="diastolic" placeholder="90"
+                      aria-describedby="diastolic-span" />
+                    <span class="input-group-text" id="diastolic-span">mm/Hg</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- capillary refill time -->
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="label text-white-sm-disable" for="capillaryRefillTime">Capillary Refill Time</label>
+                  <select class="form-control" name="capillaryRefillTime" id="capillaryRefillTime">
+                    <option value="< 2 sec">
+                      < 2 sec</option>
+                    <option value="> 2 sec">> 2 Sec</option>
+                  </select>
+                </div>
+              </div>
+              <!-- <div class="col-lg-6">
+											<div class="form-group">
+												<label class="label text-white-sm-disable" for="pulse">Pulse Rate</label>
+												<input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control" name="pulse" id="pulse" placeholder="70"><span>BPM</span>
+											</div>
+										</div> -->
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="label text-white-sm-disable" for="drop">Drop Factor For IV Cannula Set</label>
+                  <select class="form-control" name="drop" id="drop">
+                    <option value="15">15 Drop = 1mL (Mostly Used)</option>
+                    <option value="60">60 Drop = 1mL (Microburette)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- calculate button -->
+              <div class="col-md-12 center">
+                <div class="form-group">
+                  <button onclick="calculate()" class="btn btn-primary">
+                    CALCULATE
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row sec2 d-none" id="sec2">
+              <div class="text-danger mL-3 d-none shock">Shock Patient</div>
+              <!-- <div class="text-warning mL-3 mb-3">
+                Please Encourage ORAL Fluid Intake and keep note of Fluid
+                amount taken orally.
+              </div>-->
+              <div class="col-md-12 text-align-center">
+                <div id="chart"></div>
+              </div>
+
+              <section id="resultSection">
+                <h4>Calculation Summary</h4>
+                <table class="table table-striped" id="result-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Output</th>
+                      <th scope="col">Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="text-white-sm-disable mb-3 col-12">
+                          Total Fluid Requirement In 48 Hours (Oral + IV):
+                        </div>
+                      </td>
+                      <td><strong id="total"></strong> mL</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="text-white-sm-disable mb-3 col-12">
+                          Suggested Starting
+                          <strong class="font-weight-normal" id="flow"></strong>:
+                        </div>
+                      </td>
+                      <td>
+                        <strong id="start"></strong> mL/hr or <br />
+                        <strong id="dpm"></strong>
+                        <span id="dpm_name"></span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="text-white-sm-disable mb-3 col-12">
+                          IV Fluid To Be Given In 6 Hours:
+                        </div>
+                      </td>
+                      <td><strong id="quad"></strong> mL</td>
+                    </tr>
+                    <!-- <tr>
+                              <td>
+                                <div class="text-white-sm-disable mb-3 col-12">
+                                  Deficit Percentage:
+                                </div>
+                              </td>
+                              <td><strong id="deficit-per"></strong> %</td>
+                            </tr> -->
+                    <tr>
+                      <td>
+                        <div class="text-white-sm-disable mb-3 col-12">
+                          Deficit Fluid Requirement (<strong id="deficit-per"></strong>%):
+                        </div>
+                      </td>
+                      <td><strong id="deficit-req"></strong> mL</td>
+                    </tr>
+                     <tr>
+                      <td>
+                        <div class="text-white-sm-disable mb-3 col-12">
+                          Maintenance Fluid Requirement:
+                        </div>
+                      </td>
+                      <td><strong id="result"></strong> mL</td>
+                    </tr>
+                    <tr class="d-none ibw">
+                      <td>
+                        <div class="text-white-sm-disable mb-3 col-12">
+                          IBW:
+                        </div>
+                      </td>
+                      <td><strong id="ibw"></strong> Kg</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section>
+                <h4 class="mb-4 text-align-left">Patient Management Guidelines:</h5>
+                <ul style="list-style-type: disc; margin-left: 20px;">
+                  <li>Please ensure that the drop-factor selected matches with the IV infusion set.</li>
+                  <li>Starting flow-rates may be higher than suggested in the chart in case of severe patients. Please
+                    use clinical judgement.</li>
+                  <!--<li>If Hematocrit is available, starting fluid on the basis of Hct.
+                      <ul>
+                        <li>Hct &lt; 20:
+                          <ul>
+                            <li>1.5 mL/kg/hour for children</li>
+                            <li>10 drops/min (40 mL/hour) for adults</li>
+                          </ul>
+                        </li>
+                        <li>Hct 20-25:
+                          <ul>
+                            <li>3 mL/kg/hour for children</li>
+                            <li>20 drops/min (80 mL/hour) for adults</li>
+                          </ul>
+                        </li>
+                        <li>Hct &gt; 25:
+                          <ul>
+                            <li>7 to 10 mL/kg/hour for children</li>
+                            <li>25 to 125 drops/min (100 to 500 mL/hour) for adults</li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>-->
+				  <li>If the patient has stable vitals, do not escalate to the next level of the pyramid.</li>
+                  <li>Patients should be followed-up every 2 hours.</li>
+                  <li>Monitor pulse pressure, respiratory rate, temperature, pulse rate and volume, capillary refill
+                    time, skin color, urine output.</li>
+                  <li>Types of Crystalloid (IV fluids) used in Dengue:
+                    <ul>
+                      <li>For children &lt; 6 months: 0.45% half strength normal saline solution (0.45% NaCl)</li>
+                      <li>For patients aged &gt; 6 months:0.9% NaCl (isotonic normal saline solution) (0.9% NS)(Preferable)</li>
+					  <li>5% dextrose in Ringer's lactate solution (5% DRL)</li>
+					  <li>5% dextrose in acetated Ringer's solution (5% DRA) </li>
+					  <li>Hartman solution (Preferable) </li>
+                  </ul>
+                </li>
+                </ul>
+
+                <h4 class="mb-4 text-align-left">Indications for Immediate Action:</h5>
+                <ul style="list-style-type: disc; margin-left: 20px;">
+                  <li>Pulse rate &gt; 120/min with fever or &gt; 100/min without fever</li>
+                  <li>Pulse pressure 20 mmHg or less </li>
+                  <li>Postural drop of SBP &gt; 20 mmHg</li>
+                  <li>Significant bleeding (Haematemesis, Melena, Bleeding PV, etc.)</li>
+                  <li>Urine output (UOP) &lt; 0.5mL /kg/hr</li>
+                  <li>CRFT &gt; 2 sec</li>
+                </ul>
+              </section>
+              
+              <!-- patient information -->
+              <section id="patientInfoSection">
+                <h4>Patient Information</h4>
+                <table class="table" id="patientInfoTable">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="text-white-sm-disable mb-3 col-12">
+                          <strong>Patient Type</strong>
+                        </div>
+                      </td>
+                      <td id="patientTypeText">Adult</td>
+                      <td>
+                        <div class="text-white-sm-disable mb-3 col-12">
+                          <strong>Height (ft-inch)</strong>
+                        </div>
+                      </td>
+                      <td id="heightText">5 ft 7 inch</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="text-white-sm-disable mb-3 col-12">
+                          <strong>Gender</strong>
+                        </div>
+                      </td>
+                      <td id="genderText">Male</td>
+                      <td>
+                        <div class="text-white-sm-disable mb-3 col-12">
+                          <strong>Blood Pressure(mmHg)</strong>
+                        </div>
+                      </td>
+                      <td id="bloodPressureText">120/90</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="text-white-sm-disable mb-3 col-12">
+                          <strong>Age</strong>
+                        </div>
+                      </td>
+                      <td id="ageText">xxx</td>
+                      <td>
+                        <div class="text-white-sm-disable mb-3 col-12">
+                          <strong>Capillary Refill Time(sec)</strong>
+                        </div>
+                      </td>
+                      <td id="capillaryRefillTimeText">
+                        < 2s</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="text-white-sm-disable mb-3 col-12">
+                          <strong>Body Weight (Kg)</strong>
+                        </div>
+                      </td>
+                      <td id="bodyWeightText">68</td>
+                      <td>
+                        <div class="text-white-sm-disable mb-3 col-12">
+                          <strong>Drop Factor</strong>
+                        </div>
+                      </td>
+                      <td id="dropFactorText">15 drops = 1mL</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section>
+                <h4 class="mb-4 text-align-left"> References</h5>
+                <ul style="list-style-type: disc; margin-left: 20px;">
+                  <li>National Guideline for Clinical Management of Dengue Syndrome, 4th Edition, 
+                    2018 Revised (Printed May, 2020), Government of the People&#39;s Republic 
+                    of Bangladesh, ISBN 978-984-33-0628-9</li>
+                  <li>World Health Organization - Comprehensive Guidelines for Prevention and 
+                    Control of Dengue and Dengue Hemorrhagic Fever (Revised and expanded 
+                    edition, 2011).</li>
+                  <li>Pocket Guideline for Dengue Clinical Case Management, Directorate General of 
+                    Health Services (Revised edition, 2022),  Government of the People&#39;s Republic 
+                    of Bangladesh.</li>
+                </ul>
+              </section>
+
+              <div class="col-md-12 center hide-portion1">
+                <div class="form-group">
+                  <button onclick="back()" class="btn btn-primary">
+                    < Back </button>
+                </div>
+                <div class="form-group">
+                  <button onclick="handleSaveAsPdfBtn()" class="btn btn-primary savePdfBtn">
+                    Save as PDF
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row sec3 d-none" id="sec3">
+              <div class="col-12 font-weight-bold text-white-sm-disable">
+                After 6 hours Please Input These Parameters.
+              </div>
+              <div class="col-md-7">
+                <div class="form-group">
+                  <label class="label text-white-sm-disable" for="condition">Has the Patient's condition
+                    improved?</label>
+                  <select class="form-control" name="condition" id="condition">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="label text-white-sm-disable" for="oral">Oral Fluid Intake in 6 hours</label>
+                  <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control"
+                    name="oral" id="oral" placeholder="50" /><span>mL</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="label text-white-sm-disable" for="iv">IV Fluid given in 6 hours</label>
+                  <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control"
+                    name="iv" id="iv" placeholder="50" /><span>mL</span>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <button onclick="flowRate()" class="btn btn-primary">
+                    Calculate
+                  </button>
+                </div>
+              </div>
+              <div class="text-warning mb-3 col-12 flowrate d-none">
+                IV Flowrate for next 6 hours:
+                <strong id="nextFlowRate"></strong> mL/hr /
+                <strong id="drops"></strong> Drops per minute
+              </div>
+              <div class="text-warning mb-3 col-12 flowrate d-none">
+                Fluid Remaining after 6 hours (ORAL+IV):
+                <strong id="final"></strong> mL
+              </div>
+            </div>
+            <div class="disclaimer font-weight-bold hide-portion2" id="disclaimer">
+              Disclaimer: Do not use this tool for patients with pregnancy and labour, 
+              severe diarrhoea, ischemic heart disease, heart failure, chronic kidney disease, 
+              acute kidney injury, chronic liver disease.
+              <!-- 
+              <br />
+              Do not use the app for patients with kidney Issues, Pregnancy or
+              Diarrhea.
+            </div>
+            <div class="disclaimer-success font-weight-bold hide-portion3">
+              Equations used for Calculation / References
+              <a target="_blank"
+                href="https://docs.google.com/document/d/1vW0ss6OONuTy2RVaw-RTtqXmij7LIPwutCQPXX-tKDg/view">Here</a>
+            </div>-->
+          </div>
+        </div>
+        <!-- <div class="col-lg-3 col-md-3 d-flex align-items-stretch">
+              <div class="info-wrap bg-primary w-100 p-md-5 p-4 left"></div>
+            </div> -->
+      </div>
+    </div>
+  </section>
+
+  <script src="js/bmi_table.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="js/graph.js"></script>
+  <script src="js/main.js"></script>
+  <style>
+    footer {
+      background-color: maroon;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    footer h4 {
+      color: white;
+      font-weight: bold;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin: 1px;
+    }
+  </style>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Quick Links</h4>
+          <a href="https://mhealth.buet.ac.bd/DengueDropsInfo/" target="_blank">
+            Learn more about DengueDrops
+          </a>
+          <a href="https://drive.google.com/file/d/17s6iJJZmRxfNAt5TywIZNxoWeRqLVRxB/view?usp=sharing" target="_blank">
+            Link to Latest Pocket Guideline for Dengue Clinical Case Management
+          </a>
+          <a href="https://mhealth.buet.ac.bd/" target="_blank">
+            Return to mHealth lab home
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+
+</html>
