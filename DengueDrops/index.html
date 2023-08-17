@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/custom.css" />
+  <link href='https://fonts.googleapis.com/css?family=Bellota Text' rel='stylesheet'>
+
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <!-- <script src="js/html2canvas.min.js"></script> -->
@@ -19,6 +21,99 @@
   <style>
     .text-align-center {
       text-align: center;
+    }
+
+
+    input.form-control {
+      border-radius: 15px;
+      border: 1px solid #cccccc
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    body {
+      font-family: 'Bellota Text', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container-fluid {
+      padding: 0;
+    }
+
+    .logo-img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .ftco-section {
+      background-color: #ffffff00;
+      padding: 50px 0;
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+    }
+
+    .btn-primary {
+      background-color: #d9534f;
+      border: none;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #c9302c;
+    }
+
+    .row [class^="col"] {
+      padding: 5px;
+    }
+
+    .footer {
+      background-color: #8b0000;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .footer h4 {
+      color: white;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin: 1px;
+    }
+
+    body {
+      background: url('https://images.wisegeek.com/woman-getting-blood-pressure-taken-by-woman-in-blue-scrubs.jpg') center/cover no-repeat fixed;
+    }
+
+    .selectWrapper {
+      border-radius: 15px;
+      overflow: hidden;
+      background: #cccccc;
+      border: 1px solid #cccccc
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Bellota Text', sans-serif;
+    }
+
+    .bg-white {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px 40px;
     }
   </style>
 </head>
@@ -43,7 +138,7 @@
             <h5 class="mb-4 text-align-center">
               (For Group B Non Shock patients)
             </h5>
-            <h6 class="mb-4 text-align-center" style="color: red; font-weight: bold;">
+            <h6 class="mb-4 text-align-center" style="color: rgb(196, 0, 0);">
               Attention: The values are calculated according to the DGHS dengue guidelines. Please use clinical
               judgement whenever appropriate.
             </h6>
@@ -67,72 +162,64 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="label text-white-sm-disable" for="type">Select Patient Type</label>
-                  <select class="form-control" name="type" id="patientType" onchange="changePatientTypeDropdown(this)">
-                    <option value="child">Child</option>
-                    <option value="adult">Adult</option>
-                  </select>
+                  <div class="selectWrapper">
+                    <select class="form-control" name="type" id="patientType"
+                      onchange="changePatientTypeDropdown(this)">
+                      <option value="child">Child</option>
+                      <option value="adult">Adult</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <!-- gender option -->
               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="label text-white-sm-disable" for="gender">Select Gender</label>
-                  <select class="form-control" name="gender" id="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                  </select>
+                  <div class="selectWrapper">
+                    <select class="form-control" name="gender" id="gender">
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
                 </div>
               </div>
 
-              <!-- age input section -->
+              <!-- Age and Height input sections -->
               <div class="col-lg-6 age-div" id="ageInputSection">
                 <div class="form-group">
                   <label class="label text-white-sm-disable" for="age">Patient Age</label>
+                  <div class="input-group mb-3">
+                    <input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                      class="form-control col-6" name="ageYear" id="ageYear" placeholder="Year"
+                      aria-describedby="ageYear-span" />
+                    <input type="text" class="form-control col-6" name="ageMonth" id="ageMonth" placeholder="Month"
+                      aria-describedby="ageMonth-span" />
 
-                  <div class="row px-3">
-                    <div class="input-group mb-3">
-                      <input type="number" min="0" step="1" oninput="validity.valid||(value='');"
-                        class="form-control col-5" name="ageYear" id="ageYear" placeholder="1"
-                        aria-describedby="ageYear-span" />
-                      <span class="input-group-text" id="ageYear-span">Year</span>
-                    </div>
-                    <div class="input-group mb-3">
-                      <input type="text" class="form-control col-5" name="ageMonth" id="ageMonth" placeholder="1"
-                        aria-describedby="ageMonth-span" />
-                      <span class="input-group-text" id="ageMonth-span">Month</span>
-                    </div>
                   </div>
                 </div>
               </div>
 
-              <!-- height input section -->
               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="label text-white-sm-disable" for="height">Patient Height</label>
-                  <div class="row px-3">
-                    <div class="input-group mb-3">
-                      <input type="number" min="0" step="1" oninput="validity.valid||(value='');"
-                        class="form-control col-5" name="ft" id="ft" placeholder="5" aria-describedby="ft-span" />
-                      <span class="input-group-text" id="ft-span">Feet</span>
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <input type="number" min="0" max="12" step="1" oninput="validity.valid||(value='');"
-                        class="form-control col-5" name="in" id="in" placeholder="5" aria-describedby="ft-span" />
-                      <span class="input-group-text" id="ft-span">Inches</span>
-                    </div>
+                  <div class="input-group mb-3">
+                    <input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                      class="form-control col-6" name="ft" id="ft" placeholder="Feet" aria-describedby="ft-span" />
+                    <input type="number" min="0" max="12" step="1" oninput="validity.valid||(value='');"
+                      class="form-control col-6" name="in" id="in" placeholder="Inches" aria-describedby="ft-span" />
                   </div>
                 </div>
               </div>
+
 
               <!-- body weight -->
               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="label text-white-sm-disable" for="weight">Patient Body Weight</label>
                   <div class="input-group mb-3">
-                    <input type="number" class="form-control col-5" name="weight" id="weight" placeholder="60"
+                    <input type="number" class="form-control col-12" name="weight" id="weight" placeholder="e.g. 60 KG"
                       aria-describedby="weight-span" />
-                    <span class="input-group-text" id="weight-span">KG</span>
+                    <!-- <span class="input-group-text" id="weight-span">KG</span> -->
                   </div>
                 </div>
               </div>
@@ -143,9 +230,9 @@
                   <label class="label text-white-sm-disable" for="systolic">Systolic Blood Pressure</label>
                   <div class="input-group mb-3">
                     <input type="number" min="0" max="299" step="1" oninput="validity.valid||(value='');"
-                      class="form-control col-5" name="systolic" id="systolic" placeholder="120"
+                      class="form-control col-12" name="systolic" id="systolic" placeholder="e.g. 120 mm/Hg"
                       aria-describedby="systolic-span" />
-                    <span class="input-group-text" id="systolic-span">mm/Hg</span>
+                    <!-- <span class="input-group-text" id="systolic-span">mm/Hg</span> -->
                   </div>
                 </div>
               </div>
@@ -156,9 +243,9 @@
                   <label class="label text-white-sm-disable" for="diastolic">Diastolic Blood Pressure</label>
                   <div class="input-group mb-3">
                     <input type="number" min="0" max="199" step="1" oninput="validity.valid||(value='');"
-                      class="form-control col-5" name="diastolic" id="diastolic" placeholder="90"
+                      class="form-control col-12" name="diastolic" id="diastolic" placeholder="e.g. 90 mm/Hg"
                       aria-describedby="diastolic-span" />
-                    <span class="input-group-text" id="diastolic-span">mm/Hg</span>
+                    <!-- <span class="input-group-text" id="diastolic-span">mm/Hg</span> -->
                   </div>
                 </div>
               </div>
@@ -167,11 +254,13 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="label text-white-sm-disable" for="capillaryRefillTime">Capillary Refill Time</label>
-                  <select class="form-control" name="capillaryRefillTime" id="capillaryRefillTime">
-                    <option value="< 2 sec">
-                      < 2 sec</option>
-                    <option value="> 2 sec">> 2 Sec</option>
-                  </select>
+                  <div class="selectWrapper">
+                    <select class="form-control" name="capillaryRefillTime" id="capillaryRefillTime">
+                      <option value="< 2 sec">
+                        < 2 sec</option>
+                      <option value="> 2 sec">> 2 Sec</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <!-- <div class="col-lg-6">
@@ -183,10 +272,12 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="label text-white-sm-disable" for="drop">Drop Factor For IV Cannula Set</label>
-                  <select class="form-control" name="drop" id="drop">
-                    <option value="15">15 Drop = 1mL (Mostly Used)</option>
-                    <option value="60">60 Drop = 1mL (Microburette)</option>
-                  </select>
+                  <div class="selectWrapper">
+                    <select class="form-control" name="drop" id="drop">
+                      <option value="15">15 Drop = 1mL (Mostly Used)</option>
+                      <option value="60">60 Drop = 1mL (Microburette)</option>
+                    </select>
+                  </div>
                 </div>
               </div>
 
@@ -265,7 +356,7 @@
                       </td>
                       <td><strong id="deficit-req"></strong> mL</td>
                     </tr>
-                     <tr>
+                    <tr>
                       <td>
                         <div class="text-white-sm-disable mb-3 col-12">
                           Maintenance Fluid Requirement:
@@ -287,11 +378,11 @@
 
               <section>
                 <h4 class="mb-4 text-align-left">Patient Management Guidelines:</h5>
-                <ul style="list-style-type: disc; margin-left: 20px;">
-                  <li>Please ensure that the drop-factor selected matches with the IV infusion set.</li>
-                  <li>Starting flow-rates may be higher than suggested in the chart in case of severe patients. Please
-                    use clinical judgement.</li>
-                  <!--<li>If Hematocrit is available, starting fluid on the basis of Hct.
+                  <ul style="list-style-type: disc; margin-left: 20px;">
+                    <li>Please ensure that the drop-factor selected matches with the IV infusion set.</li>
+                    <li>Starting flow-rates may be higher than suggested in the chart in case of severe patients. Please
+                      use clinical judgement.</li>
+                    <!--<li>If Hematocrit is available, starting fluid on the basis of Hct.
                       <ul>
                         <li>Hct &lt; 20:
                           <ul>
@@ -313,32 +404,33 @@
                         </li>
                       </ul>
                     </li>-->
-				  <li>If the patient has stable vitals, do not escalate to the next level of the pyramid.</li>
-                  <li>Patients should be followed-up every 2 hours.</li>
-                  <li>Monitor pulse pressure, respiratory rate, temperature, pulse rate and volume, capillary refill
-                    time, skin color, urine output.</li>
-                  <li>Types of Crystalloid (IV fluids) used in Dengue:
-                    <ul>
-                      <li>For children &lt; 6 months: 0.45% half strength normal saline solution (0.45% NaCl)</li>
-                      <li>For patients aged &gt; 6 months:0.9% NaCl (isotonic normal saline solution) (0.9% NS)(Preferable)</li>
-					  <li>5% dextrose in Ringer's lactate solution (5% DRL)</li>
-					  <li>5% dextrose in acetated Ringer's solution (5% DRA) </li>
-					  <li>Hartman solution (Preferable) </li>
+                    <li>If the patient has stable vitals, do not escalate to the next level of the pyramid.</li>
+                    <li>Patients should be followed-up every 2 hours.</li>
+                    <li>Monitor pulse pressure, respiratory rate, temperature, pulse rate and volume, capillary refill
+                      time, skin color, urine output.</li>
+                    <li>Types of Crystalloid (IV fluids) used in Dengue:
+                      <ul>
+                        <li>For children &lt; 6 months: 0.45% half strength normal saline solution (0.45% NaCl)</li>
+                        <li>For patients aged &gt; 6 months:0.9% NaCl (isotonic normal saline solution) (0.9%
+                          NS)(Preferable)</li>
+                        <li>5% dextrose in Ringer's lactate solution (5% DRL)</li>
+                        <li>5% dextrose in acetated Ringer's solution (5% DRA) </li>
+                        <li>Hartman solution (Preferable) </li>
+                      </ul>
+                    </li>
                   </ul>
-                </li>
-                </ul>
 
-                <h4 class="mb-4 text-align-left">Indications for Immediate Action:</h5>
-                <ul style="list-style-type: disc; margin-left: 20px;">
-                  <li>Pulse rate &gt; 120/min with fever or &gt; 100/min without fever</li>
-                  <li>Pulse pressure 20 mmHg or less </li>
-                  <li>Postural drop of SBP &gt; 20 mmHg</li>
-                  <li>Significant bleeding (Haematemesis, Melena, Bleeding PV, etc.)</li>
-                  <li>Urine output (UOP) &lt; 0.5mL /kg/hr</li>
-                  <li>CRFT &gt; 2 sec</li>
-                </ul>
+                  <h4 class="mb-4 text-align-left">Indications for Immediate Action:</h5>
+                    <ul style="list-style-type: disc; margin-left: 20px;">
+                      <li>Pulse rate &gt; 120/min with fever or &gt; 100/min without fever</li>
+                      <li>Pulse pressure 20 mmHg or less </li>
+                      <li>Postural drop of SBP &gt; 20 mmHg</li>
+                      <li>Significant bleeding (Haematemesis, Melena, Bleeding PV, etc.)</li>
+                      <li>Urine output (UOP) &lt; 0.5mL /kg/hr</li>
+                      <li>CRFT &gt; 2 sec</li>
+                    </ul>
               </section>
-              
+
               <!-- patient information -->
               <section id="patientInfoSection">
                 <h4>Patient Information</h4>
@@ -407,17 +499,17 @@
 
               <section>
                 <h4 class="mb-4 text-align-left"> References</h5>
-                <ul style="list-style-type: disc; margin-left: 20px;">
-                  <li>National Guideline for Clinical Management of Dengue Syndrome, 4th Edition, 
-                    2018 Revised (Printed May, 2020), Government of the People&#39;s Republic 
-                    of Bangladesh, ISBN 978-984-33-0628-9</li>
-                  <li>World Health Organization - Comprehensive Guidelines for Prevention and 
-                    Control of Dengue and Dengue Hemorrhagic Fever (Revised and expanded 
-                    edition, 2011).</li>
-                  <li>Pocket Guideline for Dengue Clinical Case Management, Directorate General of 
-                    Health Services (Revised edition, 2022),  Government of the People&#39;s Republic 
-                    of Bangladesh.</li>
-                </ul>
+                  <ul style="list-style-type: disc; margin-left: 20px;">
+                    <li>National Guideline for Clinical Management of Dengue Syndrome, 4th Edition,
+                      2018 Revised (Printed May, 2020), Government of the People&#39;s Republic
+                      of Bangladesh, ISBN 978-984-33-0628-9</li>
+                    <li>World Health Organization - Comprehensive Guidelines for Prevention and
+                      Control of Dengue and Dengue Hemorrhagic Fever (Revised and expanded
+                      edition, 2011).</li>
+                    <li>Pocket Guideline for Dengue Clinical Case Management, Directorate General of
+                      Health Services (Revised edition, 2022), Government of the People&#39;s Republic
+                      of Bangladesh.</li>
+                  </ul>
               </section>
 
               <div class="col-md-12 center hide-portion1">
@@ -478,11 +570,12 @@
                 <strong id="final"></strong> mL
               </div>
             </div>
-            <div class="disclaimer font-weight-bold hide-portion2" id="disclaimer">
-              Disclaimer: Do not use this tool for patients with pregnancy and labour, 
-              severe diarrhoea, ischemic heart disease, heart failure, chronic kidney disease, 
+            <h6 class="mb-4 text-align-center" style="color: rgb(196, 0, 0);" id="disclaimer">
+              Disclaimer: Do not use this tool for patients with pregnancy and labour,
+              severe diarrhoea, ischemic heart disease, heart failure, chronic kidney disease,
               acute kidney injury, chronic liver disease.
-              <!-- 
+            </h6>
+            <!-- 
               <br />
               Do not use the app for patients with kidney Issues, Pregnancy or
               Diarrhea.
@@ -493,12 +586,11 @@
                 href="https://docs.google.com/document/d/1vW0ss6OONuTy2RVaw-RTtqXmij7LIPwutCQPXX-tKDg/view">Here</a>
             </div>-->
           </div>
-        </div>
-        <!-- <div class="col-lg-3 col-md-3 d-flex align-items-stretch">
+          <!-- <div class="col-lg-3 col-md-3 d-flex align-items-stretch">
               <div class="info-wrap bg-primary w-100 p-md-5 p-4 left"></div>
             </div> -->
+        </div>
       </div>
-    </div>
   </section>
 
   <script src="js/bmi_table.js"></script>
