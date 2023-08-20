@@ -1,0 +1,173 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica;
+}
+
+header{
+	background-image:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.9)),url(../cover.PNG);
+	height: 800px;
+	background-repeat: no-repeat;
+	margin:auto;
+	width: auto;
+	background-size: cover;
+	background-position: center;
+}
+h2 {
+	
+	/*width:80%;*/
+	margin-left:5%;
+	margin-right:5%
+}
+#fs{
+	list-style-type: none;
+}
+
+#fs li{
+	display: inline-block;
+}
+
+#fs li a{
+	text-decoration: none;
+	color: #000;
+	padding: 5px 20px;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	background-color: #E4E8EE;
+	transition: 0.6s ease;
+}
+
+#fs li a:hover{
+	background-color:#C9453E;
+	color: #fff;
+}
+
+.logo img{
+	float: right;
+	width: 80px;
+	height: auto;
+	margin-right: 20px;
+	margin-top: 20px;
+}
+
+.title{
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.title h2{
+	color: #000;
+	font-size: 35px;
+	text-align: center;
+	font-family: Century Gothic;
+}
+
+.title h1{
+	color: #000;
+	font-size: 40px;
+	text-align: center;
+	font-family: Century Gothic;
+}
+
+#first{
+	font-family: Helvetica;
+	color: #000000;
+	padding-top:25px;
+	padding-left:25px;
+	padding-right:25px;
+	text-align: justify;
+	line-height: 1.4;
+	font-size: 20px;
+	/*width:80%;*/
+	margin-left:5%;
+	margin-right:5%
+}
+
+.photo{
+	/*width: 400px;*/
+	/*height: auto;*/
+	margin-top: 10px;
+}
+
+.photo img{
+	width: 450px;
+	height: auto;
+	border: 1px solid #000000;
+}
+
+.photo p{
+	font-family: Helvetica;
+	margin-top: 10px;
+	text-align: center;
+	font-size: 20px;
+	/*width:80%;*/
+	margin-left:5%;
+	margin-right:5%
+}
+
+.bullet_points{
+	width: 80%;
+}
+
+.bullet_points ul li{
+	font-family: Helvetica;
+	font-size: 30px;
+	text-align: justify;
+	line-height: 1.4;
+}
+
+
+.full_schematics img{
+	width: 100%;
+	height: auto;
+}
+
+.full_schematics p{
+	font-family: Helvetica;
+	color: #000000;
+	text-align: center;
+	font-size: 20px;
+	/*width:80%;*/
+	margin-left:5%;
+	margin-right:5%
+}
+
+
+.future img{
+	position: center;
+	border: 1px solid #000000;
+	width: 550px;
+	height: auto;
+}
+
+.future p{
+	font-family: Helvetica;
+	color: #000000;
+	text-align: center;
+	line-height: 1.4;
+	font-size: 20px;
+	/*width:80%;*/
+	margin-left:5%;
+	margin-right:5%
+}
+#last_para{
+	font-family: Helvetica;
+	color: #000000;
+	margin-left: 450px;
+	margin-top: 500px;
+	margin-right: 450px;
+	text-align: justify;
+	line-height: 1.4;
+	font-size: 30px;
+	/*width:80%;*/
+	margin-left:5%;
+	margin-right:5%
+}
+
+
+
+#copyright{
+	text-align: center;
+}
