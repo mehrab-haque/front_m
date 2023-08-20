@@ -59,7 +59,7 @@ function showChart(patientType, calculatedIbw, drop) {
 
   var options = {
     title: {
-      text: "Fluid management chart for non-shock patients (drops/min)",
+      text: "Fluid Management Chart",
       align: "middle",
       margin: 10,
       offsetX: 0,
