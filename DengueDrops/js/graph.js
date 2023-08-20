@@ -35,6 +35,13 @@ function showChart(patientType, calculatedIbw, drop) {
   }
 
   for (let i = 0; i < 8; i++) {
+    let fontSize = "12px";
+    let offsetX = 35;
+
+    if (window.innerWidth <= 768) {
+      fontSize = "6px";
+      offsetX = 17;
+    }
     annotationsXAxis.push({
       label: {
         text: i == 7 ? 'KVO' : `${charDataInMl[i + 1]}ml`,
@@ -42,8 +49,14 @@ function showChart(patientType, calculatedIbw, drop) {
         position: "right",
         orientation: "horizontal",
         borderRadius: 10,
-        offsetX: 35,
+        offsetX: offsetX,
         offsetY: -5,
+        style: {
+          fontSize: fontSize,
+          fontFamily: "Roboto Condensed",
+          fontWeight: "bold",
+          colors: ["#00000000"],
+        },
       },
       x: chartDataX[i],
       x2: chartDataX[i] + 6,
@@ -59,12 +72,18 @@ function showChart(patientType, calculatedIbw, drop) {
 
   var options = {
     title: {
-      text: "Fluid Management Chart",
+      text: "Fluid management chart",
       align: "middle",
       margin: 10,
       offsetX: 0,
       offsetY: 0,
       floating: false,
+      style: {
+        fontSize: "14px",
+        fontFamily: "Roboto Condensed",
+        fontWeight: "bold",
+        colors: ["#00000000"],
+      },
     },
     chart: {
       toolbar: {
@@ -85,8 +104,8 @@ function showChart(patientType, calculatedIbw, drop) {
       offsetX: 0,
       offsetY: 0,
       style: {
-        fontSize: "14px",
-        fontFamily: "Helvetica, Arial, sans-serif",
+        fontSize: "12px",
+        fontFamily: "Roboto Condensed",
         fontWeight: "bold",
         colors: ["#00000000"],
       },
@@ -193,6 +212,12 @@ function showChart(patientType, calculatedIbw, drop) {
         text: "Hours",
         offsetX: 0,
         offsetY: 0,
+        style: {
+          color: "#247BA0",
+          fontFamily: "Roboto Condensed",
+          fontWeight: "bold",
+          fontSize: "14px",
+        },
       },
       categories: chartDataX,
     },
@@ -218,6 +243,9 @@ function showChart(patientType, calculatedIbw, drop) {
           text: "Rate of IV Fluid (drops/min)",
           style: {
             color: "#247BA0",
+            fontFamily: "Roboto Condensed",
+            fontWeight: "bold",
+            fontSize: "14px",
           },
         },
       },
