@@ -5,7 +5,7 @@
 }
 
 header{
-	background-image:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.9)),url(../cover.PNG);
+	background-image:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.9)),url(../cover.png);
 	height: 800px;
 	background-repeat: no-repeat;
 	margin:auto;
